@@ -2,7 +2,7 @@
 
 ## Overview
 
-SDEvelo leverages advanced stochastic differential equations (SDE) to provide a novel approach to RNA velocity analysis in single-cell RNA sequencing (scRNA-seq). This deep generative model accurately captures the complex, stochastic nature of transcriptional dynamics, offering new insights into cell differentiation and state transitions.
+`sdevelo` leverages advanced stochastic differential equations (SDE) to provide a novel approach to RNA velocity analysis in single-cell RNA sequencing (scRNA-seq). This deep generative model accurately captures the complex, stochastic nature of transcriptional dynamics, offering new insights into cell differentiation and state transitions.
 
 
 ## System Requirements
