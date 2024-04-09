@@ -1,0 +1,7 @@
+anndata
+matplotlib
+numpy
+scipy
+scvelo
+seaborn
+torch

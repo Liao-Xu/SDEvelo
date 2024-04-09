@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+sdevelo/__init__.py
+sdevelo/_config.py
+sdevelo/_model.py
+sdevelo/_pl.py
+sdevelo/_sim.py
+sdevelo.egg-info/PKG-INFO
+sdevelo.egg-info/SOURCES.txt
+sdevelo.egg-info/dependency_links.txt
+sdevelo.egg-info/requires.txt
+sdevelo.egg-info/top_level.txt
