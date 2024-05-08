@@ -18,12 +18,12 @@
   seaborn==0.11.2
   torch==1.13.1+cu117
 - **Hardware Requirements**: No non-standard hardware required.
-- **Installation Time**: SDEvelo's installation should be completed within approximately 5 minutes.
+- **Installation Time**: `sdevelo`'s installation should be completed within approximately 5 minutes.
 
 ## Installation Guide
 
 - **Step 1**: Ensure Python 3.6+ is installed on your system.
-- **Step 2**: Install SDEvelo via pip:
+- **Step 2**: Install `sdevelo`  via pip:
 
   ```bash
   pip install sdevelo
