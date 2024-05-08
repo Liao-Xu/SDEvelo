@@ -18,7 +18,7 @@
   seaborn==0.11.2
   torch==1.13.1+cu117
 - **Hardware Requirements**: No non-standard hardware required.
-
+- **Installation Time**: SDEvelo's installation should be completed within approximately 5 minutes.
 
 ## Installation Guide
 
