@@ -8,13 +8,13 @@
 ## System Requirements
 
 - **Operating Systems**: Linux (Ubuntu, CentOS), macOS, Windows 10.
-- **Python Version**: Python 3.6 and above.
+- **Python Version**: Python 3.8 and above.
 - **Dependencies**:
   anndata==0.10.7
   matplotlib==3.7.1
   numpy==1.23.5
   scipy==1.8.1
-  scvelo==0.2.5
+  scvelo>=0.3.0
   seaborn==0.11.2
   torch==1.13.1+cu117
 - **Hardware Requirements**: No non-standard hardware required.
@@ -22,7 +22,7 @@
 
 ## Installation Guide
 
-- **Step 1**: Ensure Python 3.6+ is installed on your system.
+- **Step 1**: Ensure Python 3.8+ is installed on your system.
 - **Step 2**: Install `sdevelo`  via pip:
 
   ```bash
