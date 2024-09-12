@@ -33,7 +33,7 @@ def plot_latent_time(adata, args, figsize=(4.5, 3), dpi=300):
 
     # Remove the legend and add a colorbar
     ax.collections[0].set_sizes([150])
-    ax.figure.colorbar(sm)
+    plt.colorbar(sm, ax=ax)
     plt.axis('off')
     plt.show()
 
