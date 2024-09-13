@@ -1,9 +1,6 @@
 SDEvelo Documentation
 =====================
 
-.. image:: _static/sde_flow.png
-   :alt: SDEvelo Flow Chart
-   :align: center
 
 Advanced RNA Velocity Analysis
 ------------------------------
