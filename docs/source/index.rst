@@ -1,9 +1,12 @@
 SDEvelo Documentation
 =====================
 
+.. image:: _static/sde_flow.png
+   :alt: SDEvelo Flow Chart
+   :align: center
 
-Advanced RNA Velocity Analysis
-------------------------------
+SDEvelo: A Deep Generative Approach for Transcriptional Dynamics
+----------------------------------------------------------------
 
 SDEvelo represents a significant advancement in single-cell RNA sequencing (scRNA-seq) an sequece based spatial transcriptomics (ST) analysis:
 
@@ -37,6 +40,15 @@ Key Features
 - Accurate detection of carcinogenesis
 - Facilitates downstream analyses for biological discovery
 
+System Requirements
+-------------------
+
+- **Operating Systems**: Linux (Ubuntu, CentOS), macOS, Windows 10
+- **Python Version**: Python 3.8 and above
+- **Hardware Requirements**: No non-standard hardware required
+- **Installation Time**: Approximately 5 minutes
+
+For more detailed information, please refer to the :ref:`installation` section.
 
 Quick Start
 -----------
@@ -45,12 +57,12 @@ Quick Start
 
    pip install sdevelo
 
-For more detailed usage instructions, please see the section.
+For more detailed usage instructions, please see the :ref:`usage` section.
 
 Demo
 ----
 
-We provide an interactive demo as a Jupyter Notebook. For details on running the demo and expected outputs, please check the section.
+We provide an interactive demo as a Jupyter Notebook. For details on running the demo and expected outputs, please check the :ref:`demo` section.
 
 References
 ----------
