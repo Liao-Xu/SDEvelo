@@ -132,18 +132,25 @@ class SDENN:
 
     def __init__(self, args, adata):
         # Initialize model parameters from 'paras' with defaults where applicable.
+        self.device = self.setup_environment(args)
         self.ukey = args.ukey
         self.skey = args.skey
         self.mode = args.mode
-        self.device = self.setup_environment(args)
-        if self.ukey == 'Mu':
+        self.time_mode = args.time_mode
+        self.batchSz = args.batchSz
+        if args.process == True:
             # Filter and normalize
             scv.pp.filter_and_normalize(adata, min_shared_counts=20, n_top_genes=args.n_gene)
             # Compute moments
             scv.pp.moments(adata, n_pcs=30, n_neighbors=30)
             
         self.adata = adata
-        paras = self.init_para(self.adata)
+        
+        if len(self.adata) > args.n_cell:
+            indexes = self.process_data(args)
+            paras = self.init_para(self.adata[indexes])
+        else:
+            paras = self.init_para(self.adata)
 
         if paras.gamma_init is None:
             paras.gamma_init = torch.ones(K)
@@ -156,29 +163,30 @@ class SDENN:
             
         self.K = paras.K
         self.a = torch.tensor(paras.a_init).to(self.device).requires_grad_(True) #original time
-        self.b = (100.0*torch.ones(paras.K)).to(self.device).requires_grad_(True)
+        self.b = (100.0*torch.ones(self.K)).to(self.device).requires_grad_(True)
         self.c = torch.tensor(paras.c_init).to(self.device).requires_grad_(True) #original alpha
         self.h = 0.01
-        self.sigma1 = (0.01*torch.ones(paras.K)).to(self.device).requires_grad_(True)
-        self.sigma2 = (0.01*torch.ones(paras.K)).to(self.device).requires_grad_(True)
-        self.u = Tensor(paras.u_train, paras.K)
-        self.s = Tensor(paras.s_train, paras.K)
+        self.sigma1 = (0.01*torch.ones(self.K)).to(self.device).requires_grad_(True)
+        self.sigma2 = (0.01*torch.ones(self.K)).to(self.device).requires_grad_(True)
+        self.u = Tensor(paras.u_train, self.K)
+        self.s = Tensor(paras.s_train, self.K)
 
         train_dat = TensorDataset(self.s, self.u)
-        self.trainLoader = DataLoader(train_dat, batch_size=200, shuffle=True)
+        self.trainLoader = DataLoader(train_dat, batch_size=self.batchSz, shuffle=True)
+        print(len(train_dat))
 
         
         
         # settings
         if paras.s0_init is None:
-            self.s0 = torch.zeros(paras.K).to(self.device)
+            self.s0 = torch.zeros(self.K).to(self.device)
         if paras.u0_init is None:
-            self.u0 = torch.zeros(paras.K).to(self.device)
+            self.u0 = torch.zeros(self.K).to(self.device)
             
         self.s0 = torch.tensor(paras.s0_init).to(self.device)
         self.u0 = torch.tensor(paras.u0_init).to(self.device)
-        self.s_shift = torch.zeros(paras.K).to(self.device).requires_grad_(True)
-        self.u_shift = torch.zeros(paras.K).to(self.device).requires_grad_(True)
+        self.s_shift = torch.zeros(self.K).to(self.device).requires_grad_(True)
+        self.u_shift = torch.zeros(self.K).to(self.device).requires_grad_(True)
 
         self.beta = torch.tensor(paras.c_init).to(self.device).requires_grad_(True)
         self.gamma = torch.tensor(paras.c_init).to(self.device).requires_grad_(True)
@@ -190,6 +198,25 @@ class SDENN:
         self.scheduler_1 = MultiStepLR(self.optimizer_1, milestones=[200], gamma=0.1)
         self.scheduler_2 = MultiStepLR(self.optimizer_2, milestones=[200], gamma=0.1)
 
+    def process_data(self, args):
+        """
+        Process the given adata object using Scanpy and scVelo.
+    
+        Parameters:
+        adata (AnnData): Annotated data matrix.
+        args (argparse.Namespace): Arguments, should have 'n_raw_gene' attribute.
+        
+        Returns:
+        indexes (numpy.ndarray): Sorted random indices used for subsetting adata.
+        """
+    
+        # Generate random indices
+        num_rows = args.n_cell
+        total_rows = len(self.adata)
+        random_indices = np.random.choice(total_rows, num_rows, replace=False)
+        indexes = np.sort(random_indices)
+        return indexes
+        
     def setup_environment(self, args):
         """
         Configure the environment for PyTorch and NumPy based on the provided arguments.
@@ -211,7 +238,7 @@ class SDENN:
         # Determine if CUDA is available and should be used
         args.cuda = not args.no_cuda and torch.cuda.is_available()
         device = torch.device("cuda" if args.cuda else "cpu")
-    
+        print(device)
         # Additional configurations if CUDA is being used
         if args.cuda:
             torch.cuda.manual_seed(args.seed)
@@ -336,7 +363,7 @@ class SDENN:
                 self.sigma2.clamp_(0.01, 10.0)
 
             # Optional: Log training progress.
-            if (epoch) % 20 == 0:
+            if (epoch) % 50 == 0:
                 # print(epoch+1)
                 print(
                 'Epoch: %d, Loss: %.3f, alpha: %.2f, beta: %.2f, gamma: %.2f, s1: %.3f, s2: %.3f,  t_m: %.3f,  u_shift: %.3f,  s_shift: %.3f' % 
@@ -367,18 +394,49 @@ class SDENN:
         
     def latent_time(self):
         """
-        Calculate latent time.
+        Calculate latent time for each cell in the dataset.
+    
+        Uses either Euclidean distance (time_mode=0) or optimal transport (time_mode=1)
+        to find the nearest predicted timepoint for each cell.
+    
+        Returns:
+            anndata.AnnData: Updated with 'pred_u', 'pred_s' layers and 'latent_time' observation.
+    
+        Raises:
+            ImportError: If time_mode=1 and 'ot' package is not installed.
+            ValueError: If invalid time_mode is provided.
         """
         s_raw = self.adata.layers[self.skey]
         u_raw = self.adata.layers[self.ukey]
         u_pred, s_pred = self.generate()
         pred_data = np.concatenate((u_pred, s_pred), axis=1)
         raw_data = np.concatenate((u_raw, s_raw), axis=1)
+
+        if self.time_mode==0:
+            distances = cdist(raw_data, pred_data, 'sqeuclidean')
+            nearest_indices = np.argmin(distances, axis=1)
+        elif self.time_mode == 1:
+            try:
+                import ot
+            except ImportError:
+                raise ImportError("Please install the 'ot' package for optimal transport. You can install it using 'pip install POT'.")
+
+            # Compute the squared Euclidean distance matrix for optimal transport
+            cost_matrix = ot.dist(raw_data, pred_data, metric='sqeuclidean')
     
-        distances = cdist(raw_data, pred_data, 'sqeuclidean')
-        nearest_indices = np.argmin(distances, axis=1)
+            # Compute the optimal transport plan using the Sinkhorn algorithm
+            epsilon = 0.5  # Regularization parameter
+            transport_plan = ot.sinkhorn(np.ones(raw_data.shape[0]) / raw_data.shape[0],
+                                         np.ones(pred_data.shape[0]) / pred_data.shape[0],
+                                         cost_matrix, epsilon)
+            
+            # Compute the optimal assignment from the transport plan
+            nearest_indices = np.argmax(transport_plan, axis=1)
+            
         t_pred = np.linspace(0, 1, int(1 / self.h))
         latent_time = t_pred[nearest_indices]
+        self.adata.layers['pred_u'] = u_pred[nearest_indices]
+        self.adata.layers['pred_s'] = s_pred[nearest_indices]
         self.adata.obs['latent_time'] = latent_time
         return self.adata
         
