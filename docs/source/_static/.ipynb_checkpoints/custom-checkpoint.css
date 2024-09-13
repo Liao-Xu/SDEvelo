@@ -1,0 +1,52 @@
+/* Change the background color of the entire sidebar */
+.wy-nav-side {
+    background-color: #ffffff;  /* Set sidebar background to white */
+}
+
+/* Change the background color of the sidebar header (the search box area) */
+.wy-side-nav-search {
+    background-color: #ffffff;  /* Set search area background to white */
+}
+
+/* Change the color of the sidebar links */
+.wy-nav-side a, .wy-nav-side a:hover {
+    color: #000000;  /* Set link text to black */
+}
+
+/* Remove the blue highlight from the current page link */
+.wy-nav-side .current a {
+    background-color: transparent;
+    color: #000000;  /* Keep the current link text black */
+}
+
+/* Change the hover effect on sidebar links */
+.wy-nav-side a:hover {
+    background-color: #f0f0f0;  /* Light gray background on hover */
+}
+
+/* Change the color of the sidebar headings */
+.wy-side-nav-menu li.toctree-l1 > a {
+    font-weight: bold;
+    color: #000000;  /* Set heading text to black */
+}
+
+/* Adjust the color of the nested list items */
+.wy-side-nav-menu li {
+    border: none;  /* Remove borders between items */
+}
+
+/* Customize the scrollbar (optional) */
+.wy-side-scroll {
+    scrollbar-color: #c0c0c0 #ffffff;  /* Scrollbar thumb and track colors */
+}
+
+/* Optional: Remove the left border line */
+.wy-nav-side {
+    border-right: none;
+}
+
+/* Optional: Adjust the font size and style */
+.wy-nav-side a {
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
