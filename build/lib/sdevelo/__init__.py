@@ -1,8 +1,3 @@
-from ._sim import SimData
-from ._config import Config
-from ._model import SDENN
-from ._pl import plot_streamline, plot_latent_time, plot_noise_histogram
-
 import os
 from time import gmtime, strftime
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -20,5 +15,14 @@ except (LookupError, ImportError):
     __version__ = version(__name__)
     del version
 
-print (f'(Running SDEvelo {__version__})')
+print (f'(Working on SDEvelo {__version__})')
 print (strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+
+
+from _sim import SimData
+from _config import Config
+from _model import SDENN
+from _pl import plot_streamline, plot_latent_time, plot_noise_histogram, plot_gene_scatter
+from _infer import infer_gene_correlations
+
+

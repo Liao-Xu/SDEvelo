@@ -3,6 +3,7 @@ README.md
 setup.py
 sdevelo/__init__.py
 sdevelo/_config.py
+sdevelo/_infer.py
 sdevelo/_model.py
 sdevelo/_pl.py
 sdevelo/_sim.py
