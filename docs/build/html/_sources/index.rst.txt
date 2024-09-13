@@ -48,7 +48,7 @@ System Requirements
 - **Hardware Requirements**: No non-standard hardware required
 - **Installation Time**: Approximately 5 minutes
 
-For more detailed information, please refer to the :ref:`installation` section.
+For more detailed information, please refer to the section.
 
 Quick Start
 -----------
@@ -57,19 +57,14 @@ Quick Start
 
    pip install sdevelo
 
-For more detailed usage instructions, please see the :ref:`usage` section.
+For more detailed usage instructions, please see the  section.
 
 Demo
 ----
 
-We provide an interactive demo as a Jupyter Notebook. For details on running the demo and expected outputs, please check the :ref:`demo` section.
+We provide an interactive demo as a Jupyter Notebook. For details on running the demo and expected outputs, please check the section.
 
-References
-----------
 
-If you use SDEvelo in your research, please cite our paper:
-
-[Citation information to be added]
 
 Indices and tables
 ==================
