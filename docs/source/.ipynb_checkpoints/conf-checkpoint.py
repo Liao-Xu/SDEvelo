@@ -3,7 +3,8 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
-
+# Add to the list of paths where Sphinx looks for source files
+sys.path.insert(0, os.path.abspath('tutorials'))
 # -- Project information -----------------------------------------------------
 
 project = 'SDEvelo'
@@ -12,10 +13,11 @@ author = 'Xu Liao'
 release = 'https://pypi.org/project/sdevelo/'
 
 # -- General configuration ---------------------------------------------------
-
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
+    'nbsphinx',
     'sphinx.ext.napoleon'
 ]
 
@@ -33,8 +35,13 @@ exclude_patterns = [
     '.*',
     '**/.*',
 ]
-
+nbsphinx_allow_errors = True
 # -- Options for HTML output -------------------------------------------------
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+
+# Add this line to include your custom CSS
+html_css_files = [
+    'custom.css',
+]

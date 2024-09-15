@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HCC section 1 &mdash; SDEvelo https://pypi.org/project/sdevelo/ documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ead369f5" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=4813451f"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SDEvelo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">HCC section 1</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SDEvelo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HCC section 1</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/demo_HCC1.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="HCC-section-1">
+<h1>HCC section 1<a class="headerlink" href="#HCC-section-1" title="Permalink to this heading"></a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sv</span>
+<span class="kn">import</span> <span class="nn">scvelo</span> <span class="k">as</span> <span class="nn">scv</span>
+<span class="kn">import</span> <span class="nn">anndata</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">adata</span> <span class="o">=</span> <span class="n">anndata</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="s1">&#39;data/HCC/HCC4_data.h5ad&#39;</span><span class="p">)</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s1">&#39;clusters_colors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#CB181D&quot;</span><span class="p">,</span> <span class="s2">&quot;#EF3B2C&quot;</span><span class="p">,</span> <span class="s2">&quot;#FB6A4A&quot;</span><span class="p">,</span> <span class="s2">&quot;#FC9272&quot;</span><span class="p">,</span> <span class="s2">&quot;#FCBBA1&quot;</span><span class="p">,</span> <span class="s2">&quot;#1f77b4&quot;</span><span class="p">,</span> <span class="s2">&quot;#A65628&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;#00ee00&quot;</span><span class="p">]</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;slice&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">sorted_codes_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;clusters&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s1">&#39;clusters_colors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s1">&#39;clusters_colors&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sorted_codes_list</span><span class="p">]</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(Working on SDEvelo)
+2024-09-13 15:28:55
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="n">sv</span><span class="o">.</span><span class="n">Config</span><span class="p">()</span>
+<span class="n">args</span><span class="o">.</span><span class="n">vis_type_col</span> <span class="o">=</span> <span class="s1">&#39;clusters&#39;</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">sv</span><span class="o">.</span><span class="n">SDENN</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">adata</span><span class="p">)</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">nEpochs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+cuda
+Filtered out 731 genes that are detected 20 counts (shared).
+WARNING: Did not normalize X as it looks processed already. To enforce normalization, set `enforce=True`.
+Normalized count data: spliced, unspliced.
+Skip filtering by dispersion since number of variables are less than `n_top_genes`.
+WARNING: Did not modify X as it looks preprocessed already.
+computing neighbors
+    finished (0:00:07) --&gt; added
+    &#39;distances&#39; and &#39;connectivities&#39;, weighted adjacency matrices (adata.obsp)
+computing moments based on connectivities
+    finished (0:00:00) --&gt; added
+    &#39;Ms&#39; and &#39;Mu&#39;, moments of un/spliced abundances (adata.layers)
+2982
+Epoch: 0, Loss: 2.181, alpha: 6.83, beta: 6.35, gamma: 0.01, s1: 0.014, s2: 0.010,  t_m: 0.207,  u_shift: 0.000,  s_shift: 0.014
+Epoch: 50, Loss: 1.008, alpha: 5.50, beta: 22.29, gamma: 2.54, s1: 0.024, s2: 0.011,  t_m: 0.220,  u_shift: 0.000,  s_shift: -0.063
+Epoch: 100, Loss: 0.955, alpha: 9.06, beta: 31.01, gamma: 2.75, s1: 0.113, s2: 0.010,  t_m: 0.134,  u_shift: 0.000,  s_shift: -0.063
+Epoch: 150, Loss: 0.920, alpha: 12.38, beta: 35.09, gamma: 2.95, s1: 0.167, s2: 0.010,  t_m: 0.100,  u_shift: 0.000,  s_shift: -0.063
+Epoch: 200, Loss: 0.992, alpha: 12.49, beta: 40.63, gamma: 3.21, s1: 0.206, s2: 0.010,  t_m: 0.100,  u_shift: 0.000,  s_shift: -0.063
+Epoch: 250, Loss: 0.926, alpha: 12.45, beta: 41.35, gamma: 3.25, s1: 0.221, s2: 0.011,  t_m: 0.100,  u_shift: 0.000,  s_shift: -0.063
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">arrow_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sv</span><span class="o">.</span><span class="n">plot_streamline</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+computing velocity graph (using 10/128 cores)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "16390503883d40848fc54c2979987fb3", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+    finished (0:00:04) --&gt; added
+    &#39;sde_velocity_graph&#39;, sparse matrix with cosine correlations (adata.uns)
+--&gt; added &#39;sde_velocity_length&#39; (adata.obs)
+--&gt; added &#39;sde_velocity_confidence&#39; (adata.obs)
+--&gt; added &#39;sde_velocity_confidence_transition&#39; (adata.obs)
+computing velocity embedding
+    finished (0:00:00) --&gt; added
+    &#39;sde_velocity_pca&#39;, embedded velocity vectors (adata.obsm)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_demo_HCC1_3_3.png" src="../_images/tutorials_demo_HCC1_3_3.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;row&#39;</span><span class="p">],</span> <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;col&#39;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;latent_time&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_demo_HCC1_4_0.png" src="../_images/tutorials_demo_HCC1_4_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Xu Liao.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

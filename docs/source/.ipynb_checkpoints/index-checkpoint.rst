@@ -1,73 +1,46 @@
-SDEvelo Documentation
-=====================
+# SDEvelo Documentation
 
-.. image:: _static/sde_flow.png
-   :alt: SDEvelo Flow Chart
-   :align: center
+![SDEvelo Flow Chart](_static/sde_flow.png)
 
-SDEvelo: A Deep Generative Approach for Transcriptional Dynamics
-----------------------------------------------------------------
+## SDEvelo: A Deep Generative Approach for Transcriptional Dynamics
 
-SDEvelo represents a significant advancement in single-cell RNA sequencing (scRNA-seq) an sequece based spatial transcriptomics (ST) analysis:
+SDEvelo represents a significant advancement in single-cell RNA sequencing (scRNA-seq) and sequence-based spatial transcriptomics (ST) analysis.
 
--  SDEvelo employs multivariate stochastic differential equations (SDE) to model RNA velocity.
+```{toctree}
+:maxdepth: 2
+:caption: HOME
 
-- **Key Features**:
+overview
+installation
+```
 
-  - Deep generative approach
-  - Models dynamics of unspliced and spliced RNAs
-  - Captures inherent uncertainty in transcriptional dynamics
-  - Estimates cell-specific latent time across genes
+```{toctree}
+:maxdepth: 2
+:caption: TUTORIALS
 
-SDEvelo offers a more accurate and comprehensive approach to understanding cell differentiation and state transitions in scRNA-seq studies.
+tutorials/simulation
+tutorials/hcc
+tutorials/reprogramming
+tutorials/erythroid
+tutorials/pbmcs
+```
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   overview
-   installation
-
-
-
-Key Features
-------------
+## Key Features
 
 - Multivariate stochastic modeling of transcriptional dynamics
 - Cell-specific latent time estimation
 - Applicable to both scRNA-seq and sequencing-based spatial transcriptomics data
 - Computationally scalable
-- Accurate detection of carcinogenesis
-- Facilitates downstream analyses for biological discovery
 
-System Requirements
--------------------
+## Quick Start
 
-- **Operating Systems**: Linux (Ubuntu, CentOS), macOS, Windows 10
-- **Python Version**: Python 3.8 and above
-- **Hardware Requirements**: No non-standard hardware required
-- **Installation Time**: Approximately 5 minutes
+```
+pip install sdevelo
+```
 
-For more detailed information, please refer to the section.
+For more detailed usage instructions, see the [Installation](installation.rst) section.
 
-Quick Start
------------
-
-.. code-block:: bash
-
-   pip install sdevelo
-
-For more detailed usage instructions, please see the  section.
-
-Demo
-----
-
-We provide an interactive demo as a Jupyter Notebook. For details on running the demo and expected outputs, please check the section.
-
-
-
-Indices and tables
-==================
+## Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
