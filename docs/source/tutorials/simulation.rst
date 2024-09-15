@@ -15,7 +15,7 @@ In this tutorial, you will:
 Getting Started
 ---------------
 
-To follow along with this tutorial, ensure you have SDEvelo installed. If you haven't installed it yet, refer to the :doc:`Installation <installation>` section.
+To follow along with this tutorial, ensure you have SDEvelo installed.
 
 .. note::
    It's recommended to use a virtual environment to manage dependencies and avoid conflicts.
