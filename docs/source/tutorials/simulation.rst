@@ -1,21 +1,54 @@
-# Simulation Tutorial
+Simulation Tutorial
+===================
 
-This tutorial demonstrates the application of SDEvelo to simulated data.
+This tutorial demonstrates the application of **SDEvelo** to simulated single-cell RNA sequencing (scRNA-seq) data. By following this guide, you will learn how to generate synthetic data, apply SDEvelo to model transcriptional dynamics, and analyze the results in comparison to the known ground truth.
 
-## Contents
+Contents
+--------
 
-In this tutorial, we will:
+In this tutorial, you will:
 
-1. Generate simulated single-cell RNA sequencing data
-2. Apply SDEvelo to model the transcriptional dynamics
-3. Analyze the results and compare them to the ground truth
+1. **Generate Simulated scRNA-seq Data**
+2. **Apply SDEvelo to Model Transcriptional Dynamics**
+3. **Analyze and Compare Results to Ground Truth**
 
-## Notebook
+Getting Started
+---------------
 
-```{toctree}
-:maxdepth: 1
+To follow along with this tutorial, ensure you have SDEvelo installed. If you haven't installed it yet, refer to the :doc:`Installation <installation>` section.
 
-demo_simulation
-```
+.. note::
+   It's recommended to use a virtual environment to manage dependencies and avoid conflicts.
 
-Follow this notebook to learn how SDEvelo performs on simulated data with known ground truth.
+Tutorial Notebook
+-----------------
+
+The core of this tutorial is a Jupyter notebook that guides you through each step interactively.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Simulated SDE demo
+
+   demo_simulation
+
+How to Use This Tutorial
+------------------------
+
+1. **Open the Notebook**:
+   Navigate to the `demo_simulation.ipynb` notebook in this section and open it using Jupyter Notebook or JupyterLab.
+
+2. **Follow the Instructions**:
+   Each section of the notebook contains detailed explanations and code snippets. Execute the cells sequentially to replicate the simulation and analysis.
+
+3. **Explore and Modify**:
+   Feel free to experiment by modifying parameters or adding new analyses to deepen your understanding of SDEvelo's capabilities.
+
+Expected Outcomes
+-----------------
+
+By the end of this tutorial, you will:
+
+- Understand how to generate realistic simulated scRNA-seq data.
+- Gain hands-on experience applying SDEvelo to model transcriptional dynamics.
+- Be able to interpret the results and assess the accuracy of the modeling against known ground truth.
+

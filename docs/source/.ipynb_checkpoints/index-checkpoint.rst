@@ -1,47 +1,55 @@
-# SDEvelo Documentation
+===============================
+SDEvelo Documentation
+===============================
 
-![SDEvelo Flow Chart](_static/sde_flow.png)
+.. image:: _static/sde_flow.png
+   :alt: SDEvelo Flow Chart
+   :align: center
 
-## SDEvelo: A Deep Generative Approach for Transcriptional Dynamics
+Welcome to the **SDEvelo** documentation! SDEvelo represents a significant advancement in single-cell RNA sequencing (scRNA-seq) and sequence-based spatial transcriptomics (ST) analysis.
 
-SDEvelo represents a significant advancement in single-cell RNA sequencing (scRNA-seq) and sequence-based spatial transcriptomics (ST) analysis.
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents
 
-```{toctree}
-:maxdepth: 2
-:caption: HOME
+   overview
+   installation
+   tutorials/index
 
-overview
-installation
-```
 
-```{toctree}
-:maxdepth: 2
-:caption: TUTORIALS
+===============================
+Key Features
+===============================
 
-tutorials/simulation
-tutorials/hcc
-tutorials/reprogramming
-tutorials/erythroid
-tutorials/pbmcs
-```
+- **Multivariate stochastic modeling** of transcriptional dynamics
+- **Cell-specific latent time estimation**
+- **Versatile Compatibility**: Applicable to both scRNA-seq and sequencing-based spatial transcriptomics data
+- **Computationally Scalable**
 
-## Key Features
+===============================
+Quick Start
+===============================
 
-- Multivariate stochastic modeling of transcriptional dynamics
-- Cell-specific latent time estimation
-- Applicable to both scRNA-seq and sequencing-based spatial transcriptomics data
-- Computationally scalable
+To install SDEvelo, use `pip`:
 
-## Quick Start
+.. code-block:: bash
 
-```
-pip install sdevelo
-```
+    pip install sdevelo
 
-For more detailed usage instructions, see the [Installation](installation.rst) section.
+For more detailed usage instructions, see the :doc:`Installation <installation>` section.
 
-## Indices and tables
+===============================
+Tutorials
+===============================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Explore our comprehensive tutorials to get started with SDEvelo:
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Tutorials
+
+   tutorials/simulation
+   tutorials/hcc
+   tutorials/reprogramming
+   tutorials/erythroid
+   tutorials/pbmcs

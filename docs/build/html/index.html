@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; SDEvelo https://pypi.org/project/sdevelo/ documentation</title>
+  <title>SDEvelo Documentation &mdash; SDEvelo https://pypi.org/project/sdevelo/ documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ead369f5" />
@@ -22,7 +22,8 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Overview of SDEvelo" href="overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,10 +45,22 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul class="simple">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview of SDEvelo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
 </ul>
-</div>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/simulation.html">Simulation Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_HCC1.html">HCC section 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_HCC2.html">HCC section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_reprogramming.html">Reprogramming demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_erythroid.html">Erythroid Differentiation Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_pbmc.html">PBMCs demo</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -62,7 +75,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">SDEvelo Documentation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -72,48 +85,81 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <p># SDEvelo Documentation</p>
-<p>![SDEvelo Flow Chart](_static/sde_flow.png)</p>
-<p>## SDEvelo: A Deep Generative Approach for Transcriptional Dynamics</p>
-<p>SDEvelo represents a significant advancement in single-cell RNA sequencing (scRNA-seq) and sequence-based spatial transcriptomics (ST) analysis.</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>{toctree}
-:maxdepth: 2
-:caption: HOME</p>
-<p>overview
-installation
-<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
-<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a>{toctree}
-:maxdepth: 2
-:caption: TUTORIALS</p>
-<p>tutorials/simulation
-tutorials/hcc
-tutorials/reprogramming
-tutorials/erythroid
-tutorials/pbmcs
-<a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
-<p>## Key Features</p>
-<ul class="simple">
-<li><p>Multivariate stochastic modeling of transcriptional dynamics</p></li>
-<li><p>Cell-specific latent time estimation</p></li>
-<li><p>Applicable to both scRNA-seq and sequencing-based spatial transcriptomics data</p></li>
-<li><p>Computationally scalable</p></li>
+  <section id="sdevelo-documentation">
+<h1>SDEvelo Documentation<a class="headerlink" href="#sdevelo-documentation" title="Permalink to this heading"></a></h1>
+<img alt="SDEvelo Flow Chart" class="align-center" src="_images/sde_flow.png" />
+<p>Welcome to the <strong>SDEvelo</strong> documentation! SDEvelo represents a significant advancement in single-cell RNA sequencing (scRNA-seq) and sequence-based spatial transcriptomics (ST) analysis.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview of SDEvelo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#sdevelo-a-deep-generative-approach-for-transcriptional-dynamics">SDEvelo: A Deep Generative Approach for Transcriptional Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#workflow-and-downstream-analysis">Workflow and Downstream Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#key-features">Key Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#addressing-limitations-in-existing-methods">Addressing Limitations in Existing Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#sdevelo-s-unique-approach">SDEvelo’s Unique Approach</a></li>
 </ul>
-<p>## Quick Start</p>
-<p><code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sdevelo</span>
-<span class="pre">`</span></code></p>
-<p>For more detailed usage instructions, see the [Installation](installation.rst) section.</p>
-<p>## Indices and tables</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-steps">Installation Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installing-from-source">Installing from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#gpu-support">GPU Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#troubleshooting">Troubleshooting</a></li>
 </ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/simulation.html">Simulation Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/demo_HCC1.html">HCC section 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/demo_HCC2.html">HCC section 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/demo_reprogramming.html">Reprogramming demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/demo_erythroid.html">Erythroid Differentiation Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/demo_pbmc.html">PBMCs demo</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="key-features">
+<h1>Key Features<a class="headerlink" href="#key-features" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><strong>Multivariate stochastic modeling</strong> of transcriptional dynamics</p></li>
+<li><p><strong>Cell-specific latent time estimation</strong></p></li>
+<li><p><strong>Versatile Compatibility</strong>: Applicable to both scRNA-seq and sequencing-based spatial transcriptomics data</p></li>
+<li><p><strong>Computationally Scalable</strong></p></li>
+</ul>
+</section>
+<section id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h1>
+<p>To install SDEvelo, use <cite>pip</cite>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sdevelo
+</pre></div>
+</div>
+<p>For more detailed usage instructions, see the <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a> section.</p>
+</section>
+<section id="tutorials">
+<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading"></a></h1>
+<p>Explore our comprehensive tutorials to get started with SDEvelo:</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/simulation.html">Simulation Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_HCC1.html">HCC section 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_HCC2.html">HCC section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_reprogramming.html">Reprogramming demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_erythroid.html">Erythroid Differentiation Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/demo_pbmc.html">PBMCs demo</a></li>
+</ul>
+</div>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-right" title="Overview of SDEvelo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
