@@ -4,6 +4,16 @@
 
 SDEvelo represents a significant advancement in the analysis of single-cell RNA sequencing (scRNA-seq) data, offering a novel approach to inferring RNA velocity through multivariate stochastic differential equations (SDE). This deep generative model accurately captures the complex, stochastic nature of transcriptional dynamics, providing new insights into cell differentiation and state transitions.
 
+## Installation Guide
+
+1. Ensure Python 3.8+ is installed on your system.
+2. Install SDEvelo via pip:
+   ```bash
+   pip install sdevelo
+   ```
+
+SDEvelo is available on PyPI: [https://pypi.org/project/sdevelo/](https://pypi.org/project/sdevelo/)
+
 ## Documentation
 
 For detailed documentation, please visit: [https://sdevelo.readthedocs.io/en/latest/](https://sdevelo.readthedocs.io/en/latest/)
@@ -45,16 +55,6 @@ SDEvelo addresses limitations of traditional RNA velocity analysis methods that 
   - torch==1.13.1+cu117
 - **Hardware Requirements**: No non-standard hardware required
 - **Installation Time**: Approximately 5 minutes
-
-## Installation Guide
-
-1. Ensure Python 3.8+ is installed on your system.
-2. Install SDEvelo via pip:
-   ```bash
-   pip install sdevelo
-   ```
-
-SDEvelo is available on PyPI: [https://pypi.org/project/sdevelo/](https://pypi.org/project/sdevelo/)
 
 ## Demo
 
