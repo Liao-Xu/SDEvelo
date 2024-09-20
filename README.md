@@ -4,6 +4,10 @@
 
 SDEvelo represents a significant advancement in the analysis of single-cell RNA sequencing (scRNA-seq) data, offering a novel approach to inferring RNA velocity through multivariate stochastic differential equations (SDE). This deep generative model accurately captures the complex, stochastic nature of transcriptional dynamics, providing new insights into cell differentiation and state transitions.
 
+## Documentation
+
+For detailed documentation, please visit: [https://sdevelo.readthedocs.io/en/latest/](https://sdevelo.readthedocs.io/en/latest/)
+
 ### Workflow and Downstream Analysis
 
 ![SDEvelo Flow Chart](docs/source/_static/sde_flow.png)
@@ -51,10 +55,6 @@ SDEvelo addresses limitations of traditional RNA velocity analysis methods that 
    ```
 
 SDEvelo is available on PyPI: [https://pypi.org/project/sdevelo/](https://pypi.org/project/sdevelo/)
-
-## Documentation
-
-For detailed documentation, please visit: [https://sdevelo.readthedocs.io/en/latest/](https://sdevelo.readthedocs.io/en/latest/)
 
 ## Demo
 
