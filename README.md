@@ -6,11 +6,11 @@ SDEvelo represents a significant advancement in the analysis of single-cell RNA 
 
 ### Workflow and Downstream Analysis
 
-![SDEvelo Flow Chart](docs/source/static/sde_flow.png)
+![SDEvelo Flow Chart](docs/source/_static/sde_flow.png)
 
 The above image illustrates the workflow of SDEvelo, from input data to the generation of RNA velocity estimates.
 
-![SDEvelo Downstream Tasks](docs/source/static/sde_down.png)
+![SDEvelo Downstream Tasks](docs/source/_static/sde_down.png)
 
 This image showcases the various downstream tasks and analyses that can be performed using the results from SDEvelo.
 
