@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sdevelo
-Version: 0.2.5
+Version: 0.2.6
 Summary: SDEvelo: a deep generative approach for transcriptional dynamics with cell-specific latent time and multivariate stochastic modeling
 Home-page: https://github.com/Liao-Xu/SDEvelo
 Author: Xu Liao
@@ -17,7 +17,7 @@ Requires-Dist: anndata
 Requires-Dist: matplotlib
 Requires-Dist: numpy
 Requires-Dist: scipy
-Requires-Dist: scvelo>=0.3.0
+Requires-Dist: scvelo
 Requires-Dist: seaborn
 Requires-Dist: torch
 

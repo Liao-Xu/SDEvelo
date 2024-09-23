@@ -2,7 +2,11 @@ import torch
 import torch.nn as nn
 import numpy as np
 import scvelo as scv
-
+import scanpy as sc
+import importlib
+import subprocess
+import sys
+from packaging import version
 from dataclasses import dataclass
 from collections import OrderedDict
 from torch.utils.data import DataLoader, TensorDataset
@@ -137,12 +141,23 @@ class SDENN:
         self.skey = args.skey
         self.mode = args.mode
         self.time_mode = args.time_mode
+        self.sde_mode = args.sde_mode
         self.batchSz = args.batchSz
         if args.process == True:
             # Filter and normalize
             scv.pp.filter_and_normalize(adata, min_shared_counts=20, n_top_genes=args.n_gene)
-            # Compute moments
-            scv.pp.moments(adata, n_pcs=30, n_neighbors=30)
+            scvelo_version = version.parse(scv.__version__)
+
+            # Now we can use the version to determine which code to run
+            if scvelo_version < version.parse("0.3.0"):
+                print(f"Using scVelo version {scv.__version__}")
+                scv.pp.moments(adata, n_pcs=30, n_neighbors=30)
+            else:
+                print(f"Using scVelo version {scv.__version__}")
+                sc.pp.pca(adata)
+                sc.pp.neighbors(adata, n_pcs=30, n_neighbors=30)
+
+        
             
         self.adata = adata
         
@@ -297,6 +312,41 @@ class SDENN:
 
     def sde_gen(self):
         """
+        Generates SDE paths for u and s variables using either the original Euler-Maruyama method
+        or the torchsde method.
+    
+        Args:
+            method (str): The method to use for SDE generation. 
+                          Options are 'original' (default) or 'torchsde'.
+    
+        Returns:
+            tuple: (u_sde, s_sde) - The generated SDE paths for u and s variables.
+        """
+        if self.sde_mode == 'original':
+            return self.sde_gen_original()
+        elif self.sde_mode == 'torchsde':
+            # Check if torchsde is installed
+            if importlib.util.find_spec("torchsde") is None:
+                print("torchsde is not installed. Attempting to install...")
+                try:
+                    subprocess.check_call([sys.executable, "-m", "pip", "install", "torchsde"])
+                    print("torchsde has been successfully installed.")
+                except subprocess.CalledProcessError:
+                    print("Failed to install torchsde. Please install it manually.")
+                    return self.sde_gen_original()  # Fallback to original method
+    
+            # If installation was successful or package was already installed, import and use it
+            try:
+                import torchsde
+                return self.sde_gen_torchsde()
+            except ImportError:
+                print("Failed to import torchsde. Falling back to original method.")
+                return self.sde_gen_original()
+        else:
+            raise ValueError("Invalid method. Choose either 'original' or 'torchsde'.")
+    
+    def sde_gen_original(self):
+        """
         Generates SDE paths for u and s variables using Euler-Maruyama method.
         """
         a = self.a
@@ -305,25 +355,76 @@ class SDENN:
         beta = self.beta
         gamma = self.gamma
         h = self.h
-        sig1 = self.sigma1*np.sqrt(h)
-        sig2 = self.sigma2*np.sqrt(h)
-        t_gen = torch.arange(0, 1, h).to(self.device)
-
-        u_sde = torch.zeros(len(t_gen), self.K).to(self.device)
-        s_sde = torch.zeros(len(t_gen), self.K).to(self.device)
-
+        sig1 = self.sigma1 * np.sqrt(h)
+        sig2 = self.sigma2 * np.sqrt(h)
+        t_gen = torch.arange(0, 1, h, device=self.device)
+        u_sde = torch.zeros(len(t_gen), self.K, device=self.device)
+        s_sde = torch.zeros(len(t_gen), self.K, device=self.device)
         u_sde[0] = torch.relu(self.u0 + self.u_shift)
         s_sde[0] = torch.relu(self.s0 + self.s_shift)
-        
         for i in range(0, len(t_gen) - 1):
             exp_term = torch.clamp(b * (t_gen[i] - a), min=-50, max=50)
-            u_sde_temp = u_sde[i] + h * (c / (1 + torch.exp(exp_term) + 1e-9) - beta * u_sde[i].clone()) + sig1 * torch.randn(self.K).to(self.device)
-            s_sde_temp = s_sde[i] + h * (beta * u_sde[i].clone() - gamma * s_sde[i].clone()) + sig2 * torch.randn(self.K).to(self.device)
-
+            denom = 1 + torch.exp(exp_term) + 1e-9
+            u_sde_temp = (
+                u_sde[i]
+                + h * (c / denom - beta * u_sde[i].clone())
+                + sig1 * torch.randn(self.K, device=self.device)
+            )
+            s_sde_temp = (
+                s_sde[i]
+                + h * (beta * u_sde[i].clone() - gamma * s_sde[i].clone())
+                + sig2 * torch.randn(self.K, device=self.device)
+            )
             u_sde[i + 1] = torch.relu(u_sde_temp)
             s_sde[i + 1] = torch.relu(s_sde_temp)
-
-        return u_sde , s_sde 
+        return u_sde, s_sde
+    
+    def sde_gen_torchsde(self):
+        """
+        Generates SDE paths for u and s variables using torchsde's sdeint method.
+        """
+        import torchsde
+        class SDEFunc(torchsde.SDEIto):
+            def __init__(self, a, b, c, beta, gamma, sigma1, sigma2):
+                super().__init__(noise_type='diagonal')
+                self.a = a
+                self.b = b
+                self.c = c
+                self.beta = beta
+                self.gamma = gamma
+                self.sigma1 = sigma1
+                self.sigma2 = sigma2
+    
+            def f(self, t, x):
+                u = x[:, 0]
+                s = x[:, 1]
+                t = t.to(x.device)
+                exp_term = torch.clamp(self.b * (t - self.a), min=-50, max=50)
+                denom = 1 + torch.exp(exp_term) + 1e-9
+                du_dt = self.c / denom - self.beta * u
+                ds_dt = self.beta * u - self.gamma * s
+                return torch.stack([du_dt, ds_dt], dim=1)
+    
+            def g(self, t, x):
+                batch_size = x.size(0)
+                device = x.device
+                g_matrix = torch.zeros(batch_size, 2, device=device)
+                g_matrix[:, 0] = self.sigma1
+                g_matrix[:, 1] = self.sigma2
+                return g_matrix
+    
+        t_span = torch.arange(0, 1, self.h, device=self.device)
+        u0 = torch.relu(self.u0 + self.u_shift)
+        s0 = torch.relu(self.s0 + self.s_shift)
+        x0 = torch.stack([u0, s0], dim=1)
+    
+        sde_func = SDEFunc(self.a, self.b, self.c, self.beta, self.gamma, self.sigma1, self.sigma2).to(self.device)
+    
+        sol = torchsde.sdeint(sde_func, x0, t_span, method='euler', dt=self.h)
+    
+        u_sde = torch.relu(sol[:, :, 0].transpose(0, 1))
+        s_sde = torch.relu(sol[:, :, 1].transpose(0, 1))
+        return u_sde.T, s_sde.T
 
     def core(self):
         """

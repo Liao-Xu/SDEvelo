@@ -8,6 +8,9 @@ class Config:
         
         # The number of genes to consider in the model. Default is 2000.
         self.n_gene = 2000
+
+        # The number of genes to consider in the model. Default is 2000.
+        self.sde_mode = 'original'
         
         # Key for accessing visualization data. Default is 'X_pca'.
         self.vis_key = 'X_pca'
@@ -36,7 +39,7 @@ class Config:
         self.seed = 0
         
         # The number of training epochs. Default is 50.
-        self.nEpochs = 1
+        self.nEpochs = 300
 
         # The mode to calculate velocity.
         self.mode = 2

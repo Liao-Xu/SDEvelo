@@ -15,7 +15,7 @@ import matplotlib.colors as mcolors
     
 class SimData:
     def __init__(self, total_time=1, dt=0.005, K=10, n_vars=200, seed=0, 
-                 a=None, beta=None, c=None, gamma=None, u0=None, s0=None):
+                 a=None, beta=None, c=None, gamma=None, u0=None, s0=None, sig_1=2.0, sig_2=2.0):
         # Simulation Parameters
         self.total_time = total_time
         self.dt = dt
@@ -35,8 +35,8 @@ class SimData:
         self.gamma = gamma if gamma is not None else 2 + 10 *np.random.rand(self.n_vars)
 
         # Noise Parameters
-        self.sigma_1 = 2.0 * np.random.rand(self.n_vars)
-        self.sigma_2 = 2.0 * np.random.rand(self.n_vars)
+        self.sigma_1 = sig_1 * np.random.rand(self.n_vars)
+        self.sigma_2 = sig_2 * np.random.rand(self.n_vars)
         
         self.adata = None
 

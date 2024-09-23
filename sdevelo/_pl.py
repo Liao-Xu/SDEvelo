@@ -107,7 +107,7 @@ def plot_gene_scatter(adata, args, top_genes, nrows=1, ncols=None, figsize=None,
         # Style adjustments
         for spine in ax.spines.values():
             spine.set_visible(False)
-        ax.set_title(f'{gene}', fontstyle='italic')
+        ax.set_title(f'{gene}', fontsize=16, fontstyle='italic')
         ax.set_xticks([])
         ax.set_yticks([])
         ax.set(xticklabels=[], yticklabels=[], xlabel=None, ylabel=None)
@@ -124,8 +124,9 @@ def plot_gene_scatter(adata, args, top_genes, nrows=1, ncols=None, figsize=None,
         cax=cbar_ax, orientation='vertical', label='Latent Time'
     )
 
-    plt.tight_layout(rect=[0, 0, 0.9, 1])  # Adjust layout to make space for colorbar
+    # plt.tight_layout(rect=[0, 0, 0.9, 1])  # Adjust layout to make space for colorbar
     plt.show()
+
 
 def plot_streamline(adata, args, figsize=(10, 7), dpi=300, **kwargs):
     scv.tl.velocity_graph(adata, vkey='sde_velocity', n_jobs=args.scv_n_jobs)
@@ -190,6 +191,7 @@ def plot_noise_histogram(adata, bins=50, figsize=(6, 3), dpi=300):
     plt.show()
     # plt.close()  # Close the figure to avoid displaying it in notebooks or scripts
 
+
 def plot_gene_expression(adata, top_genes):
     # Define the grid size
     n1, n2 = 1, len(top_genes)  # Adjust based on how many genes you want to plot
@@ -246,4 +248,30 @@ def plot_gene_expression(adata, top_genes):
         for i in range(len(top_genes), n1 * n2):
             fig.delaxes(axes[i])
     plt.tight_layout()
+    plt.show()
+
+
+def plot_subset(adata, clusters, gene, row_title='Success Clusters', cell_type='cluster', figsize=(20, 6), dpi=300):
+    mask = adata.obs[cell_type].isin(clusters)
+    adata_subset = adata[mask].copy()
+    
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=figsize, dpi=dpi)
+    fig.suptitle(row_title, fontsize=16)
+    
+    # Plot 1: Scatter plot of latent time
+    scv.pl.scatter(adata_subset, color='latent_time', cmap='viridis_r', basis='pca', 
+                   dpi=300, s=100, ax=ax1, show=False, title='Latent Time')
+    
+    # Plot 2: Velocity embedding stream plot
+    scv.pl.velocity_embedding_stream(adata_subset, density=0.5, basis='pca', dpi=300, 
+                                     arrow_size=2, linewidth=2.0, s=100, alpha=0.7,
+                                     vkey='sde_velocity', color='cluster', 
+                                     legend_loc='right margin', ax=ax2, show=False, 
+                                     title='Velocity Embedding Stream')
+    
+    # Plot 3: Scatter plot of gene expression
+    scv.pl.scatter(adata_subset, color=gene, basis='pca', cmap='YlGnBu', 
+                   dpi=300, s=100, ax=ax3, show=False, title=f'{gene} Expression')
+    
+    # plt.tight_layout(rect=[0, 0.03, 1, 0.95])  # Adjust layout to accommodate suptitle
     plt.show()
