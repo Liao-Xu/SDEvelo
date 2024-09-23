@@ -1,5 +1,12 @@
 import os
 from time import gmtime, strftime
+
+from ._sim import SimData
+from ._config import Config
+from ._model import SDENN
+from ._pl import plot_streamline, plot_latent_time, plot_noise_histogram, plot_gene_scatter, plot_subset
+from ._infer import infer_gene_correlations
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 try:
@@ -17,12 +24,5 @@ except (LookupError, ImportError):
 
 print (f'(Working on SDEvelo {__version__})')
 print (strftime("%Y-%m-%d %H:%M:%S", gmtime()))
-
-
-from _sim import SimData
-from _config import Config
-from _model import SDENN
-from _pl import plot_streamline, plot_latent_time, plot_noise_histogram, plot_gene_scatter, plot_subset
-from _infer import infer_gene_correlations
 
 

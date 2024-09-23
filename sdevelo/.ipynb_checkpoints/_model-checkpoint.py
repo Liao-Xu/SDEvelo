@@ -156,6 +156,7 @@ class SDENN:
                 print(f"Using scVelo version {scv.__version__}")
                 sc.pp.pca(adata)
                 sc.pp.neighbors(adata, n_pcs=30, n_neighbors=30)
+                scv.pp.moments(adata, n_pcs=None, n_neighbors=None)
 
         
             

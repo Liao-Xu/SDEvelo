@@ -2,12 +2,12 @@ from setuptools import setup, find_packages
 
 setup(
     name="sdevelo",
-    version="0.2.6",
+    version="0.2.11",
     packages=find_packages(),
     install_requires=[
         'anndata',
         'matplotlib', 
-        'numpy', 
+        'numpy<2.0.0', 
         'scipy', 
         'scvelo', 
         'seaborn', 
