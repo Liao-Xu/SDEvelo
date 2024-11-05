@@ -1,8 +1,9 @@
-# SDEvelo: A Deep Generative Approach for Transcriptional Dynamics with Cell-Specific Latent Time and Multivariate Stochastic Modeling
+[![DOI](https://zenodo.org/badge/779562292.svg)](https://doi.org/10.5281/zenodo.14038379)
+# SDEvelo: A Generative Approach for Transcriptional Dynamics with Cell-Specific Latent Time and Multivariate Stochastic Modeling
 
 ## Overview
 
-SDEvelo represents a significant advancement in the analysis of single-cell RNA sequencing (scRNA-seq) data, offering a novel approach to inferring RNA velocity through multivariate stochastic differential equations (SDE). This deep generative model accurately captures the complex, stochastic nature of transcriptional dynamics, providing new insights into cell differentiation and state transitions.
+SDEvelo represents a significant advancement in the analysis of single-cell RNA sequencing (scRNA-seq) data, offering a novel approach to inferring RNA velocity through multivariate stochastic differential equations (SDE). This generative model accurately captures the complex, stochastic nature of transcriptional dynamics, providing new insights into cell differentiation and state transitions.
 
 ## Installation Guide
 
