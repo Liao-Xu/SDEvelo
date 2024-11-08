@@ -1,5 +1,5 @@
 [![PyPI version](https://img.shields.io/pypi/v/sdevelo.svg)](https://pypi.org/project/sdevelo)
-[![PyPI downloads](https://pepy.tech/badge/sdevelo)](https://pepy.tech/project/sdevelo)
+![PyPI Downloads](https://static.pepy.tech/badge/sdevelo)
 [![DOI](https://zenodo.org/badge/779562292.svg)](https://doi.org/10.5281/zenodo.14038379)
 
 # SDEvelo: A Generative Approach for Transcriptional Dynamics with Cell-Specific Latent Time and Multivariate Stochastic Modeling
