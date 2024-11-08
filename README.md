@@ -1,5 +1,5 @@
 [![PyPI version](https://img.shields.io/pypi/v/sdevelo.svg)](https://pypi.org/project/sdevelo)
-![PyPI Downloads](https://static.pepy.tech/badge/sdevelo)
+[![PyPI Downloads](https://www.pepy.tech/projects/sdevelo)](https://static.pepy.tech/badge/sdevelo)
 [![DOI](https://zenodo.org/badge/779562292.svg)](https://doi.org/10.5281/zenodo.14038379)
 
 # Multivariate stochastic modeling for transcriptional dynamics with cell-specific latent time using SDEvelo
