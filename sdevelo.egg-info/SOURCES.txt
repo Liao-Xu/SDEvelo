@@ -12,5 +12,6 @@ sdevelo.egg-info/SOURCES.txt
 sdevelo.egg-info/dependency_links.txt
 sdevelo.egg-info/requires.txt
 sdevelo.egg-info/top_level.txt
+sdevelo.egg-info/.ipynb_checkpoints/PKG-INFO-checkpoint
 sdevelo.egg-info/.ipynb_checkpoints/dependency_links-checkpoint.txt
 sdevelo.egg-info/.ipynb_checkpoints/requires-checkpoint.txt

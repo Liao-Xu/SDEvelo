@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="sdevelo",
-    version="0.2.11",
+    version="0.2.12",
     packages=find_packages(),
     install_requires=[
         'anndata',
@@ -15,7 +15,7 @@ setup(
     ],
     author="Xu Liao",
     author_email="xu.smooth.liao@gmail.com",
-    description="SDEvelo: a deep generative approach for transcriptional dynamics with cell-specific latent time and multivariate stochastic modeling",
+    description="SDEvelo: multivariate stochastic modeling for transcriptional dynamics with cell-specific latent time",
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     url="https://github.com/Liao-Xu/SDEvelo",
