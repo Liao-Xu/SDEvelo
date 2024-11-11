@@ -13,7 +13,6 @@ Welcome to the **SDEvelo** documentation! SDEvelo represents a significant advan
 
    overview
    installation
-   tutorials/index
 
 
 ===============================
@@ -48,7 +47,8 @@ Explore our comprehensive tutorials to get started with SDEvelo:
    :caption: Tutorials
 
    tutorials/simulation
-   tutorials/hcc
-   tutorials/reprogramming
-   tutorials/erythroid
-   tutorials/pbmcs
+   tutorials/demo_HCC1
+   tutorials/demo_HCC2
+   tutorials/demo_reprogramming
+   tutorials/demo_erythroid
+   tutorials/demo_pbmc
