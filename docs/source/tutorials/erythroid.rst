@@ -1,8 +1,10 @@
-# Erythroid Differentiation Tutorial
+Erythroid Differentiation Tutorial
+=================================
 
-This tutorial focuses on applying SDEvelo to study erythroid differentiation. 
+This tutorial focuses on applying SDEvelo to study erythroid differentiation.
 
-## Contents
+Contents
+--------
 
 In this tutorial, we will:
 
@@ -11,7 +13,8 @@ In this tutorial, we will:
 3. Analyze cell trajectories and identify key stages of erythroid differentiation
 4. Explore the gene expression changes associated with erythroid maturation
 
-## Notebook
+Notebook
+--------
 
 .. toctree::
    :maxdepth: 1
