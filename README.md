@@ -24,11 +24,11 @@ For detailed documentation, please visit: [https://sdevelo.readthedocs.io/en/lat
 
 ### Workflow and Downstream Analysis
 
-![SDEvelo Flow Chart]([docs/source/_static/sde_flow.png](https://github.com/Liao-Xu/SDEvelo/blob/master/docs/source/_static/sde_flow.png))
+![SDEvelo Flow Chart]([https://github.com/Liao-Xu/SDEvelo/blob/master/docs/source/_static/sde_flow.png])
 
 The above image illustrates the workflow of SDEvelo, from input data to the generation of RNA velocity estimates.
 
-![SDEvelo Downstream Tasks]([docs/source/_static/sde_down.png](https://github.com/Liao-Xu/SDEvelo/blob/master/docs/source/_static/sde_down.png))
+![SDEvelo Downstream Tasks]([https://github.com/Liao-Xu/SDEvelo/blob/master/docs/source/_static/sde_down.png])
 
 This image showcases the various downstream tasks and analyses that can be performed using the results from SDEvelo.
 
