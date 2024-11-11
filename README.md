@@ -64,7 +64,7 @@ SDEvelo addresses limitations of traditional RNA velocity analysis methods that 
 
 ### Running the Demo
 
-1. Navigate to the `docs/demo_simulation` directory in the repository.
+1. Navigate to the `docs/source/tutorials` directory in the repository.
 2. Open and execute the `demo_simulation.ipynb` Jupyter Notebook.
 
 ### Expected Output
