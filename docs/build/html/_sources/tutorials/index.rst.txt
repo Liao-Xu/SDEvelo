@@ -7,7 +7,8 @@ Follow these step-by-step tutorials to master SDEvelo:
    :maxdepth: 1
 
    simulation
-   hcc
-   reprogramming
-   erythroid
-   pbmcs
+   demo_HCC1
+   demo_HCC2
+   demo_reprogramming
+   demo_erythroid
+   demo_pbmc
