@@ -84,3 +84,20 @@ Approximately 300 seconds on a typical desktop computer.
 3. Visualize results based on the estimated SDEvelo model.
 
 Stay tuned for additional demos and updates by checking our repository regularly.
+
+## Citation
+
+If you use SDEvelo in your research, please cite:
+
+```bibtex
+@article{liao2024multivariate,
+  title={Multivariate stochastic modeling for transcriptional dynamics with cell-specific latent time using SDEvelo},
+  author={Liao, Xu and Kang, Lican and Peng, Yihao and Chai, Xiaoran and Xie, Peng and Lin, Chengqi and Ji, Hongkai and Jiao, Yuling and Liu, Jin},
+  journal={Nature Communications},
+  volume={15},
+  number={1},
+  pages={10849},
+  year={2024},
+  publisher={Nature Publishing Group UK London}
+}
+```
