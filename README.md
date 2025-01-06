@@ -4,7 +4,7 @@
 [![Documentation Status](https://readthedocs.org/projects/sdevelo/badge/?version=latest)](https://sdevelo.readthedocs.io/en/latest/?badge=latest)
 
 # Multivariate stochastic modeling for transcriptional dynamics with cell-specific latent time using SDEvelo
-Find our manuscript in Nature Communications: https://www.nature.com/articles/s41467-024-55146-5.
+Find our manuscript in *Nature Communications*: https://www.nature.com/articles/s41467-024-55146-5.
 
 ## Overview
 
