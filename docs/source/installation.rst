@@ -22,7 +22,7 @@ SDEvelo requires the following Python packages:
 - matplotlib==3.7.1
 - numpy==1.23.5
 - scipy==1.8.1
-- scvelo>=0.3.0
+- scvelo==0.2.5
 - seaborn==0.11.2
 - torch==1.13.1+cu117
 
