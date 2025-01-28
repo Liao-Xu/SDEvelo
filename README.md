@@ -102,3 +102,14 @@ If you use SDEvelo in your research, please cite:
   publisher={Nature Publishing Group UK London}
 }
 ```
+
+## 🚀 Upcoming Features
+
+We are actively working on several improvements and new features for the next release:
+
+### High Priority Updates
+- **Gene Selection Module**: Implementing an enhanced gene selection functionality based on correlation between gene expression values and estimated latent time
+- **Domain Boundary Module**: Developing a comprehensive module for domain boundary delineation
+- **Negative Controls**: Expanding documentation with detailed examples and simulated datasets
+
+We welcome community feedback and contributions! If you have specific feature requests or encounter any issues, please feel free to open an issue on our GitHub repository.
